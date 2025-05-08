@@ -89,3 +89,9 @@ Notes
 Ensure that all the dependencies are installed in your Python environment for the system to function correctly.
 
 The gRPC server and Gradio front-end can be customized to suit your needs.
+
+### Shorter/Faster version for low-end GPUs
+
+Tachotron 2 for faster TTS in low resource environments.
+Currently, it has to be run seperately with disjoint APIs.
+Will add model switching capabilities in a singular web app.
