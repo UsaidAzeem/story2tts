@@ -1,0 +1,39 @@
+# pyTorch | cuda | cudnn for gpu 
+FROM pytorch/pytorch:2.1.2-cuda12.1-cudnn8-runtime
+
+# apt non interactive mode
+ENV DEBIAN_FRONTEND=noninteractive
+
+# install system packages
+RUN apt-get update && apt-get install -y \
+    ffmpeg \
+    libsndfile1 \
+    python3-venv \
+    curl \
+    git \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# set working dir
+WORKDIR /app
+
+# copy entire proj
+COPY . .
+
+# create and activate venv
+RUN python3 -m venv /app/venv
+ENV PATH="/app/venv/bin:$PATH"
+
+# install python dependencies
+RUN pip install --upgrade pip && pip install -r requirements.txt
+
+# expose gPRC and gradio ports
+EXPOSE 50051 7860
+
+# gradio env + gpu flags for control
+ENV GRADIO_SERVER_NAME=0.0.0.0 \
+    USE_GPU=true \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/app
+
+# entry point for gPRC servre + gradio client
+CMD ["bash", "-c", "python3 inference_server.py & sleep 2 && python3 inference_client.py"]

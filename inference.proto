@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package inference;
+
+service InferenceService {
+  rpc GenerateAudio (InferenceRequest) returns (InferenceResponse);
+}
+
+message InferenceRequest {
+  string text_input = 1;
+  bytes audio_prompt = 2;  // raw audio file content (WAV)
+  int32 max_new_tokens = 3;
+  float cfg_scale = 4;
+  float temperature = 5;
+  float top_p = 6;
+  int32 cfg_filter_top_k = 7;
+  float speed_factor = 8;
+}
+
+message InferenceResponse {
+  bytes audio_output = 1;  // output WAV bytes
+  int32 sample_rate = 2;
+  string error = 3;
+}
