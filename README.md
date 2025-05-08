@@ -1,14 +1,14 @@
-Dia-TTS: Text-to-Speech Server with Gradio Front-End
+# Dia-TTS: Text-to-Speech Server with Gradio Front-End
 This repository provides a solution for building a Text-to-Speech (TTS) server using Dia 1.6B via gRPC and a Gradio-based web interface. With this setup, you can easily run a fully functional TTS system both online and offline.
 
-Requirements
+#### Requirements
 Python 3.7+
 
 Git
 
 Docker (optional for Docker-based deployment)
 
-Setup Instructions
+#### Setup Instructions
 1. Set Up the Python Environment
 Create and activate a Python virtual environment:
 
