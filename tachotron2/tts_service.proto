@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package tts;
+
+service TextToSpeech {
+  rpc GenerateAudio (TextRequest) returns (AudioResponse);
+}
+
+message TextRequest {
+  string text = 1;
+}
+
+message AudioResponse {
+  string status = 1;
+  string message = 2;
+  string audio_base64 = 3;  // Base64-encoded audio data
+}

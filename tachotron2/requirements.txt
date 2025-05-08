@@ -1,0 +1,6 @@
+TTS==0.21.0
+soundfile==0.12.1
+grpcio==1.51.1
+grpcio-tools==1.51.1
+protobuf==3.20.3
+gradio==4.27.0
